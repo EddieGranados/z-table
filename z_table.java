@@ -1,6 +1,6 @@
 public class z_table {
         private static double erf(double x) {
-                // A&S formula 7.1.26
+                
                 double a1 = 0.254829592;
                 double a2 = -0.284496736;
                 double a3 = 1.421413741;
@@ -9,11 +9,7 @@ public class z_table {
                 double p = 0.3275911;
                 x = Math.abs(x);
                 double t = 1 / (1 + p * x);
-                // Direct calculation using formula 7.1.26 is absolutely correct
-                // But calculation of nth order polynomial takes O(n^2) operations
-                // return 1 - (a1 * t + a2 * t * t + a3 * t * t * t + a4 * t * t * t * t + a5 *
-                // t * t * t * t * t) * Math.Exp(-1 * x * x);
-
+               
                 // Horner's method, takes O(n) operations for nth order polynomial
                 return 1 - ((((((a5 * t + a4) * t) + a3) * t + a2) * t) + a1) * t * Math.exp(-1 * x * x);
         }
@@ -54,7 +50,7 @@ public class z_table {
                         double c9  = (c8 + NORMSDIST(i + .1) - NORMSDIST(0));
                         double c10 = (c9 + NORMSDIST(i + .1) - NORMSDIST(0));
 
-                        // columns 3-10 werent in the right place so this shifted them one spot to the right.
+                        // columns 3-10 arent in the right place so this shifted them one spot to the right.
                         double c30 = c3*.1;
                         double c40 = c4*.1;
                         double c50 = c5*.1;
